@@ -1,0 +1,16 @@
+{
+  "name": "bars-fight",
+  "version": "1.0.0",
+  "description": "A fight game",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "author": "DuckCoder1101",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.4"
+  }
+}
