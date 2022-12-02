@@ -17,6 +17,7 @@ const ctx = canvas.getContext('2d');
 
 var bulletsMap = [];
 var playersMap = [];
+var selectedCharacter = "https://play-lh.googleusercontent.com/p7rx-TDw8mSXmnN5oreMbOrC6FTumoRsnz8rDxUHL6-7xYtLlzcyj1GS8UKyBx5eJg";
 var inputs = {
     up: false,
     down: false,
@@ -106,6 +107,20 @@ document.getElementById('voice-controller').addEventListener('click', (ev) => {
     }
 });
 
+document.querySelectorAll('.character').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+        if (!el.classList.contains('selectedCharacter')) {
+            const other = document.querySelector('.selectedCharacter');
+            if (other) {
+                other.classList.remove('selectedCharacter');
+            }
+            
+            selectedCharacter = el.getAttribute('img-path');
+            el.classList.add('selectedCharacter');
+        }
+    });
+});
+
 document.getElementById('start-game').onclick = () => {
     let input = document.querySelector('#username');
     if (!input.value) {
@@ -113,7 +128,7 @@ document.getElementById('start-game').onclick = () => {
     } else if (playersMap.find((p) => p.name == input.value)) {
         alert("Este nome já está sendo usado!");
     } else {
-        socket.emit('start-game', input.value);
+        socket.emit('start-game', input.value, selectedCharacter);
         input.parentElement.remove();   
     }
 };
@@ -157,12 +172,15 @@ async function update() {
     ctx.fillRect(0, canvas.height - 120, canvas.width, 120);
     
     ctx.fillStyle = 'black';
-    for (let { x, y, name, attributes } of playersMap) {
+    for (let { x, y, name, character, attributes } of playersMap) {
+        const img = new Image(attributes.size, attributes.size);
+        img.src = character;
+    
         ctx.fillStyle = 'black';
         ctx.textAlign = 'center';
         ctx.font = '12px Arial';
-
-        ctx.fillRect(x, y, attributes.size, attributes.size);
+        //ctx.fillRect(x, y, attributes.size, attributes.size);
+        ctx.drawImage(img, x, y, attributes.size, attributes.size);
         ctx.fillText(name, x + attributes.size / 2, y -12, canvas.width);
     }
 

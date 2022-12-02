@@ -59,6 +59,46 @@
                 color: white;
             }
 
+            #outCanvas > ul {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                justify-content: center;
+            }
+
+            #outCanvas > ul * {
+                margin: 0;
+            }
+
+            .character {
+                position: relative;
+                width: calc(100% / 3 - 30px);
+                min-height: 100px;
+                padding: 8px;
+                margin: 5px;
+                background-color: #535353;
+            }
+
+            .selectedCharacter {
+                background-color: #a5a5a5 !important;
+            }
+
+            .character > figure {
+                width: 100%;
+                height: 100%;
+            }
+
+            .character > figure > img {
+                max-width: 100%;
+            }
+
+            .character > figure > figcaption {
+                text-align: center;
+            }
+
             #outCanvas input {
                 background-color: transparent;
                 border: 1px solid white;
@@ -84,6 +124,34 @@
         <div id='outCanvas'>
             <label>Username: </label>
             <input id='username' type='text' maxlength='10' /> <br />
+            
+            <label>Presonagem: </label> <br />
+            <ul>
+                <li class="character selectedCharacter" data-img-path=''>
+                    <figure>
+                        <img src='https://play-lh.googleusercontent.com/p7rx-TDw8mSXmnN5oreMbOrC6FTumoRsnz8rDxUHL6-7xYtLlzcyj1GS8UKyBx5eJg' />
+                        <figcaption>x</figcaption>
+                    </figure>
+                </li>
+                <li class="character" data-img-path=''>
+                    <figure>
+                        <img src='https://play-lh.googleusercontent.com/p7rx-TDw8mSXmnN5oreMbOrC6FTumoRsnz8rDxUHL6-7xYtLlzcyj1GS8UKyBx5eJg' />
+                        <figcaption>x</figcaption>
+                    </figure>
+                </li>
+                <li class="character" data-img-path=''>
+                    <figure>
+                        <img src='https://play-lh.googleusercontent.com/p7rx-TDw8mSXmnN5oreMbOrC6FTumoRsnz8rDxUHL6-7xYtLlzcyj1GS8UKyBx5eJg' />
+                        <figcaption>x</figcaption>
+                    </figure>
+                </li>
+                <li class="character" data-img-path=''>
+                    <figure>
+                        <img src='https://play-lh.googleusercontent.com/p7rx-TDw8mSXmnN5oreMbOrC6FTumoRsnz8rDxUHL6-7xYtLlzcyj1GS8UKyBx5eJg' />
+                        <figcaption>x</figcaption>
+                    </figure>
+                </li>
+            </ul>
 
             <button id='start-game'>JOGAR!</button>
         </div>
